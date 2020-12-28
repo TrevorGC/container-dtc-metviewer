@@ -22,7 +22,7 @@ RUN yum -y install wget tar java gsl-devel mysql ksh \
   && yum clean all
 
 # Setup default cran repo
-RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
+# RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
 
 #
 # Install required R packages
