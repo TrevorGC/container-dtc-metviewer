@@ -15,9 +15,8 @@ RUN yum -y update \
  && yum-config-manager --enable PowerTools
 
 #
-# Install GCC
+# Install GCC - added
 #
-#RUN yum -y install wget tar java R gsl-devel mysql ksh \
 RUN yum -y install gcc \
 
 #
