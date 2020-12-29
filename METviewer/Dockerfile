@@ -17,7 +17,7 @@ RUN yum -y update \
 #
 # Install Python 3.6
 #
-RUN yum install -y python3 python3-devel python3-pip
+RUN yum install -y python3 python3-devel python3-pip python3-dev
   
 #
 # Install Python packages
