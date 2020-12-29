@@ -15,26 +15,10 @@ RUN yum -y update \
  && yum-config-manager --enable PowerTools
 
 #
-# Install Python 3.6
+# Install GCC
 #
-RUN yum install -y python3 python3-devel python3-pip python3-dev
-  
-#
-# Install Python packages
-#
-RUN pip-3 install bootstrapped \
-  && pip-3 install plotly==4.9.0 \
-  && pip-3 install kaleido \
-  && pip-3 install pandas \
-  && pip-3 install  numpy \
-  && pip-3 install  scipy \
-  && pip-3 install  PyYAML \
-  && pip-3 install  psutil \
-  && pip-3 install  requests \
-  && pip-3 install  matplotlib \
-  && pip-3 install  lxml \
-  && pip-3 install  pymysql \
-  && pip-3 install  retrying
+#RUN yum -y install wget tar java R gsl-devel mysql ksh \
+RUN yum -y install gcc \
 
 #
 # Install required packages
@@ -84,6 +68,31 @@ RUN  wget ${METVIEWER_URL} \
  && mv /tmp/METviewer/METcalcpy /METviewer-python/ \
  && mv /tmp/METviewer/METplotpy /METviewer-python/ \
  && rm METviewer-${METVIEWER_VERSION}.tar.gz
+
+
+#
+# Install Python 3.6
+#
+RUN yum install -y python3 python3-devel python3-pip
+
+  
+#
+# Install Python packages
+#
+RUN pip-3 install bootstrapped \
+  && pip-3 install plotly==4.9.0 \
+  && pip-3 install kaleido \
+  && pip-3 install pandas \
+  && pip-3 install  numpy \
+  && pip-3 install  scipy \
+  && pip-3 install  PyYAML \
+  && pip-3 install  psutil \
+  && pip-3 install  requests \
+  && pip-3 install  matplotlib \
+  && pip-3 install  lxml \
+  && pip-3 install  pymysql \
+  && pip-3 install  retrying
+
 
 #
 # point python to python3
