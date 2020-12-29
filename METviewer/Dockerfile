@@ -14,13 +14,13 @@ RUN yum -y update \
  && yum -y install 'dnf-command(config-manager)' \
  && yum-config-manager --enable PowerTools
 
-#
-# Install required packages
-#
-#RUN yum -y install wget tar java R gsl-devel mysql ksh \
-RUN yum -y install wget tar java gsl-devel mysql ksh \
-  && rm -rf /var/cache/yum/* \
-  && yum clean all
+##
+## Install required packages
+##
+##RUN yum -y install wget tar java R gsl-devel mysql ksh \
+#RUN yum -y install wget tar java gsl-devel mysql ksh \
+#  && rm -rf /var/cache/yum/* \
+#  && yum clean all
 
 # Setup default cran repo
 #RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
@@ -69,6 +69,14 @@ RUN  wget ${METVIEWER_URL} \
 #
 RUN yum install -y python3 python3-devel python3-pip
 
+#
+# Install required packages
+#
+#RUN yum -y install wget tar java R gsl-devel mysql ksh \
+RUN yum -y install wget tar java gsl-devel mysql ksh \
+  && rm -rf /var/cache/yum/* \
+  && yum clean all
+  
 #
 # Install Python packages
 #
