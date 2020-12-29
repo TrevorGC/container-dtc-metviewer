@@ -14,12 +14,6 @@ RUN yum -y update \
  && yum -y install 'dnf-command(config-manager)' \
  && yum-config-manager --enable PowerTools
 
-
-#
-# Install Python headers
-#
-RUN yum install gcc python3-devel
-
 #
 # Install Python 3.6
 #
