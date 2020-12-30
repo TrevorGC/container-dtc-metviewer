@@ -22,7 +22,7 @@ RUN yum -y install gcc \
 #
 # Install required packages
 #
-RUN yum -y install wget tar java-1.7.0-openjdk-devel java-1.7.0-openjdk gsl-devel mysql ksh \
+RUN yum -y install wget tar java gsl-devel mysql ksh \
   && rm -rf /var/cache/yum/* \
   && yum clean all
 
