@@ -8,11 +8,6 @@ ENV TOMCAT_MAJOR_VERSION 8
 ENV TOMCAT_VERSION ${TOMCAT_MAJOR_VERSION}.${TOMCAT_MINOR_VERSION}
 
 ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METviewer-${METVIEWER_VERSION}.tar.gz
-#
-# DELETE
-#
-RUN yum -y install qemu-user
-
 
 RUN yum -y update \
  && yum -y install epel-release \
