@@ -11,7 +11,7 @@ ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METv
 #
 # DELETE
 #
-RUN yum install qemu-user
+RUN yum -y install qemu-user
 
 
 RUN yum -y update \
