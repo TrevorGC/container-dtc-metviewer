@@ -19,39 +19,7 @@ RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz  \
   && rm -rf /var/cache/yum/* \
   && yum clean all
 
-
-
-
-
-#
-#Install pip-3
-#
-RUN wget https://bootstrap.pypa.io/2.6/get-pip.py \
-  && python get-pip.py 
-
-
-#
-# Install Python packages
-#
-RUN pip install bootstrapped \
-  && pip install plotly==4.9.0 \
-  && pip install kaleido \
-  && pip install pandas \
-  && pip install  numpy \
-  && pip install  scipy \
-  && pip install  PyYAML \
-  && pip install  psutil \
-  && pip install  requests \
-  && pip install  matplotlib \
-  && pip install  lxml \
-  && pip install  pymysql \
-  && pip install  retrying
   
-  
-  
-  
-  
-
 #
 # Install Tomcat
 #
@@ -69,7 +37,6 @@ EXPOSE 8080
 #
 # Download and Deploy METviewer load/batch
 #
-
 RUN mkdir /METviewer-python
 
 RUN  wget ${METVIEWER_URL} \
@@ -92,7 +59,29 @@ RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz \
   && make install
 
 
+#
+#Install pip
+#
+RUN wget https://bootstrap.pypa.io/2.6/get-pip.py \
+  && python get-pip.py 
 
+
+#
+# Install Python packages
+#
+RUN pip install bootstrapped \
+  && pip install plotly==4.9.0 \
+  && pip install kaleido \
+  && pip install pandas \
+  && pip install  numpy \
+  && pip install  scipy \
+  && pip install  PyYAML \
+  && pip install  psutil \
+  && pip install  requests \
+  && pip install  matplotlib \
+  && pip install  lxml \
+  && pip install  pymysql \
+  && pip install  retrying
 
 
 #
