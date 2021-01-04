@@ -23,7 +23,7 @@ RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz \
 #
 #
 #
-RUN install -y https://repo.ius.io/ius-release-el7.rpm \ 
+RUN yum install -y https://repo.ius.io/ius-release-el7.rpm \ 
   && yum update \
   && yum install -y python36u python36u-libs python36u-devel python36u-pip
   
