@@ -69,7 +69,7 @@ RUN  wget ${METVIEWER_URL} \
 
 RUN wget https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz \
   && mv Python-3.4.3.tar.xz Python-3.4.3.tar.gz \
-  && tar -xzvf Python-3.4.3.tar.gz \
+  && tar -xvf Python-3.4.3.tar.gz \
   && rm Python-3.4.3.tar.xz \
   && cd Python-3.* \ 
   && ./configure \
