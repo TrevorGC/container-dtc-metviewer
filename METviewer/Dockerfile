@@ -17,7 +17,7 @@ ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METv
 #
 # Install GCC - added
 #
-RUN yum -y install gcc
+#RUN yum -y install gcc
 
 #
 # Install required packages
