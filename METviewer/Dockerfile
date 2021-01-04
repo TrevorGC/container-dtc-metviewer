@@ -39,7 +39,7 @@ EXPOSE 8080
 #
 RUN mkdir /METviewer-python
 
-RUN  wget ${METVIEWER_URL} \
+RUN wget ${METVIEWER_URL} \
  && tar -xzvf  METviewer-${METVIEWER_VERSION}.tar.gz -C /tmp \
  && mv /tmp/METviewer/METviewer/dist/*.war $CATALINA_HOME/webapps/ \
  && mv /tmp/METviewer/METviewer /METviewer \
@@ -62,28 +62,26 @@ RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz \
 #
 #Install pip
 #
-RUN wget https://bootstrap.pypa.io/2.6/get-pip.py \
-  && python get-pip.py 
+RUN wget https://bootstrap.pypa.io/get-pip.py \
+  && python3.4 get-pip.py
 
 
 #
 # Install Python packages
 #
-RUN pip install --upgrade pip
-
-RUN pip install bootstrapped \
-  && pip install plotly==4.9.0 \
-  && pip install kaleido \
-  && pip install pandas \
-  && pip install  numpy \
-  && pip install  scipy \
-  && pip install  PyYAML \
-  && pip install  psutil \
-  && pip install  requests \
-  && pip install  matplotlib \
-  && pip install  lxml \
-  && pip install  pymysql \
-  && pip install  retrying
+RUN pip3 install bootstrapped \
+  && pip3 install plotly==4.9.0 \
+  && pip3 install kaleido \
+  && pip3 install pandas \
+  && pip3 install  numpy \
+  && pip3 install  scipy \
+  && pip3 install  PyYAML \
+  && pip3 install  psutil \
+  && pip3 install  requests \
+  && pip3 install  matplotlib \
+  && pip3 install  lxml \
+  && pip3 install  pymysql \
+  && pip3 install  retrying
 
 
 #
