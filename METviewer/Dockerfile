@@ -67,7 +67,7 @@ RUN  wget ${METVIEWER_URL} \
 #
 #RUN yum install -y python34 python34-devel python34-pip
 
-RUN wget https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz \
+RUN wget https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tadr.xz \
   && mv Python-3.4.3.tar.xz Python-3.4.3.tar.gz \
   && tar -xvf Python-3.4.3.tar.gz \
   && rm Python-3.4.3.tar.xz \
