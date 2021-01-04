@@ -16,19 +16,13 @@ RUN curl https://www.getpagespeed.com/files/centos6-eol.repo --output /etc/yum.r
 #
 # Install GCC - added (Don't think this should be an issue.  Python3 is having issues installing w/o GCC, but Python is already on the systems)
 #
-RUN yum -y install gcc
-
-
-#RUN yum -y update \
-# && yum -y install epel-release \
-# && yum -y install 'dnf-command(config-manager)' \
-# && yum-config-manager --enable PowerTools
+#RUN yum -y install gcc
 
 
 #
 # Install required packages
 #
-RUN yum -y install wget tar java gsl-devel mysql ksh xz \
+RUN yum -y install gcc wget tar java gsl-devel mysql ksh xz \
   && rm -rf /var/cache/yum/* \
   && yum clean all
 
@@ -67,41 +61,23 @@ RUN  wget ${METVIEWER_URL} \
 #
 #RUN yum install -y python34 python34-devel python34-pip
 
-#RUN wget https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz \
-#  && tar -xvf Python-3.* \
-#  && cd Python-3.* \ 
-#  && ./configure \
-#  && make \ 
-#  && make install
-  
-#
-# Install Python packages
-#
-#RUN pip-3 install bootstrapped \
-#  && pip-3 install plotly==4.9.0 \
-#  && pip-3 install kaleido \
-#  && pip-3 install pandas \
-#  && pip-3 install  numpy \
-#  && pip-3 install  scipy \
-#  && pip-3 install  PyYAML \
-#  && pip-3 install  psutil \
-#  && pip-3 install  requests \
-#  && pip-3 install  matplotlib \
-#  && pip-3 install  lxml \
-#  && pip-3 install  pymysql \
-#  && pip-3 install  retrying
-
+RUN wget https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz \
+  && tar -xvf Python-3.* \
+  && cd Python-3.* \ 
+  && ./configure \
+  && make \ 
+  && make install
 
 #
 # point python to python3
 #
-#RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
 #
 # set env vars
 #
-#ENV PYTHONPATH "${PYTHONPATH}:/METviewer-python/METcalcpy/:/METviewer-python/METplotpy/metplotpy/"
-#ENV METPLOTPY_BASE "/METviewer-python/METplotpy/metplotpy/"
+ENV PYTHONPATH "${PYTHONPATH}:/METviewer-python/METcalcpy/:/METviewer-python/METplotpy/metplotpy/"
+ENV METPLOTPY_BASE "/METviewer-python/METplotpy/metplotpy/"
 
 ENTRYPOINT ${CATALINA_HOME}/bin/startup.sh && /bin/bash
 CMD ["true"]
