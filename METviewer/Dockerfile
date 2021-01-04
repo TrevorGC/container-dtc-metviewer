@@ -1,15 +1,5 @@
-#FROM centos:6
-FROM scratch
-MAINTAINER https://github.com/CentOS/sig-cloud-instance-images
-ADD centos-6-docker.tar.xz /
+FROM centos:7
 
-LABEL org.label-schema.schema-version="1.0" \
-    org.label-schema.name="CentOS Base Image" \
-    org.label-schema.vendor="CentOS" \
-    org.label-schema.license="GPLv2" \
-    org.label-schema.build-date="20181006"
-
-CMD ["/bin/bash"]
 MAINTAINER Tatiana Burek <tatiana@ucar.edu>
 
 ENV METVIEWER_VERSION 3.1
@@ -19,6 +9,7 @@ ENV TOMCAT_VERSION ${TOMCAT_MAJOR_VERSION}.${TOMCAT_MINOR_VERSION}
 
 ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METviewer-${METVIEWER_VERSION}.tar.gz
 
+
 #RUN yum -y update \
 # && yum -y install epel-release \
 # && yum -y install 'dnf-command(config-manager)' \
@@ -26,13 +17,18 @@ ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METv
 
 
 #
+# Install GCC - added
+#
+RUN yum -y install gcc
+
+
+#
 # Install required packages
 #
-#RUN yum -y install wget tar java gsl-devel mysql ksh \
-#  && rm -rf /var/cache/yum/* \
-#  && yum clean all
+RUN yum -y install wget tar java gsl-devel mysql ksh \
+  && rm -rf /var/cache/yum/* \
+  && yum clean all
 
-RUN yum -y install wget
 
 #
 # Install Tomcat
