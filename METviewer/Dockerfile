@@ -22,7 +22,7 @@ ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METv
 #  && rm -rf /var/cache/yum/* \
 #  && yum clean all
 
-RUN yum -y install java
+#RUN yum -y install java
 
 #
 # Install Tomcat
