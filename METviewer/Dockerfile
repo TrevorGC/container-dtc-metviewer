@@ -10,6 +10,9 @@ ENV TOMCAT_VERSION ${TOMCAT_MAJOR_VERSION}.${TOMCAT_MINOR_VERSION}
 ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METviewer-${METVIEWER_VERSION}.tar.gz
 
 
+RUN curl https://www.getpagespeed.com/files/centos6-eol.repo --output /etc/yum.repos.d/CentOS-Base.repo
+
+
 #
 # Install GCC - added (Don't think this should be an issue.  Python3 is having issues installing w/o GCC, but Python is already on the systems)
 #
