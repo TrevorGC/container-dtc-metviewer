@@ -28,6 +28,8 @@ RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz  \
 #
 RUN wget https://bootstrap.pypa.io/2.6/get-pip.py \
   && python get-pip.py 
+  
+RUN echo pip -V \
 
 #
 # Install Python packages
