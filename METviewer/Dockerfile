@@ -58,6 +58,8 @@ RUN wget ${METVIEWER_URL} \
 #  && make \ 
 #  && make install
 #
+RUN yum --enablerepo=extras install epel-release
+#
 # Install Python 3.6
 #
 RUN yum install -y python3 python3-devel python3-pip
