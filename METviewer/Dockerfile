@@ -69,7 +69,8 @@ RUN wget https://bootstrap.pypa.io/2.6/get-pip.py \
 #
 # Install Python packages
 #
-RUN pip install bootstrapped \
+RUN pip install --upgrade setuptools \
+  && install bootstrapped \
   && pip install plotly==4.9.0 \
   && pip install kaleido \
   && pip install pandas \
