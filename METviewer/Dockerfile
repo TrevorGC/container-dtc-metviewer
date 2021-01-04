@@ -28,25 +28,24 @@ RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz  \
 #
 RUN wget https://bootstrap.pypa.io/2.6/get-pip.py \
   && python get-pip.py 
-  
-RUN echo pip -V 
+
 
 #
 # Install Python packages
 #
-RUN pip-3 install bootstrapped \
-  && pip-3 install plotly==4.9.0 \
-  && pip-3 install kaleido \
-  && pip-3 install pandas \
-  && pip-3 install  numpy \
-  && pip-3 install  scipy \
-  && pip-3 install  PyYAML \
-  && pip-3 install  psutil \
-  && pip-3 install  requests \
-  && pip-3 install  matplotlib \
-  && pip-3 install  lxml \
-  && pip-3 install  pymysql \
-  && pip-3 install  retrying
+RUN pip install bootstrapped \
+  && pip install plotly==4.9.0 \
+  && pip install kaleido \
+  && pip install pandas \
+  && pip install  numpy \
+  && pip install  scipy \
+  && pip install  PyYAML \
+  && pip install  psutil \
+  && pip install  requests \
+  && pip install  matplotlib \
+  && pip install  lxml \
+  && pip install  pymysql \
+  && pip install  retrying
   
   
   
