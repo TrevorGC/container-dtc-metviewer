@@ -11,8 +11,6 @@ ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METv
 
 RUN curl https://www.getpagespeed.com/files/centos6-eol.repo --output /etc/yum.repos.d/CentOS-Base.repo
 
-RUN curl https://bootstrap.pypa.io/2.6/get-pip.py -o get-pip.py \
-  && python2.6 get-pip.py
 
 #
 # Install required packages
@@ -21,6 +19,37 @@ RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz  \
   && rm -rf /var/cache/yum/* \
   && yum clean all
 
+
+
+
+
+#
+#Install pip-3
+#
+RUN curl https://bootstrap.pypa.io/get-pip.py \
+  && python get-pip.py 
+
+#
+# Install Python packages
+#
+RUN pip-3 install bootstrapped \
+  && pip-3 install plotly==4.9.0 \
+  && pip-3 install kaleido \
+  && pip-3 install pandas \
+  && pip-3 install  numpy \
+  && pip-3 install  scipy \
+  && pip-3 install  PyYAML \
+  && pip-3 install  psutil \
+  && pip-3 install  requests \
+  && pip-3 install  matplotlib \
+  && pip-3 install  lxml \
+  && pip-3 install  pymysql \
+  && pip-3 install  retrying
+  
+  
+  
+  
+  
 
 #
 # Install Tomcat
@@ -62,22 +91,7 @@ RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz \
   && make install
 
 
-#
-# Install Python packages
-#
-RUN pip-3 install bootstrapped \
-  && pip-3 install plotly==4.9.0 \
-  && pip-3 install kaleido \
-  && pip-3 install pandas \
-  && pip-3 install  numpy \
-  && pip-3 install  scipy \
-  && pip-3 install  PyYAML \
-  && pip-3 install  psutil \
-  && pip-3 install  requests \
-  && pip-3 install  matplotlib \
-  && pip-3 install  lxml \
-  && pip-3 install  pymysql \
-  && pip-3 install  retrying
+
 
 
 #
