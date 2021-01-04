@@ -9,7 +9,7 @@ ENV TOMCAT_VERSION ${TOMCAT_MAJOR_VERSION}.${TOMCAT_MINOR_VERSION}
 
 ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METviewer-${METVIEWER_VERSION}.tar.gz
 
-#RUN yum -y update \
+RUN yum -y update \
 # && yum -y install epel-release \
 # && yum -y install 'dnf-command(config-manager)' \
 # && yum-config-manager --enable PowerTools
