@@ -67,12 +67,12 @@ RUN  wget ${METVIEWER_URL} \
 #
 #RUN yum install -y python34 python34-devel python34-pip
 
-RUN wget https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz \
-  && tar -xvf Python-3.* \
-  && cd Python-3.* \ 
-  && ./configure \
-  && make \ 
-  && make install
+#RUN wget https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz \
+#  && tar -xvf Python-3.* \
+#  && cd Python-3.* \ 
+#  && ./configure \
+#  && make \ 
+#  && make install
   
 #
 # Install Python packages
@@ -95,13 +95,13 @@ RUN wget https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz \
 #
 # point python to python3
 #
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+#RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
 #
 # set env vars
 #
-ENV PYTHONPATH "${PYTHONPATH}:/METviewer-python/METcalcpy/:/METviewer-python/METplotpy/metplotpy/"
-ENV METPLOTPY_BASE "/METviewer-python/METplotpy/metplotpy/"
+#ENV PYTHONPATH "${PYTHONPATH}:/METviewer-python/METcalcpy/:/METviewer-python/METplotpy/metplotpy/"
+#ENV METPLOTPY_BASE "/METviewer-python/METplotpy/metplotpy/"
 
 ENTRYPOINT ${CATALINA_HOME}/bin/startup.sh && /bin/bash
 CMD ["true"]
