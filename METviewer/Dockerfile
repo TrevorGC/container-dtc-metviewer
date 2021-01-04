@@ -19,10 +19,10 @@ RUN curl https://www.getpagespeed.com/files/centos6-eol.repo --output /etc/yum.r
 RUN yum -y install gcc
 
 
-RUN yum -y update \
- && yum -y install epel-release \
- && yum -y install 'dnf-command(config-manager)' \
- && yum-config-manager --enable PowerTools
+#RUN yum -y update \
+# && yum -y install epel-release \
+# && yum -y install 'dnf-command(config-manager)' \
+# && yum-config-manager --enable PowerTools
 
 
 #
