@@ -17,12 +17,6 @@ RUN yum -y update \
 
 
 #
-# Install GCC - added
-#
-RUN yum -y install gcc
-
-
-#
 # Install required packages
 #
 RUN yum -y install wget tar java gsl-devel mysql ksh \
