@@ -14,6 +14,7 @@ ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METv
 # && yum -y install 'dnf-command(config-manager)' \
 # && yum-config-manager --enable PowerTools
 
+RUN yum -y update
 
 #
 # Install required packages
@@ -21,8 +22,6 @@ ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METv
 #RUN yum -y install wget tar java gsl-devel mysql ksh \
 #  && rm -rf /var/cache/yum/* \
 #  && yum clean all
-
-RUN yum clean all
 
 RUN yum -y install wget
 
