@@ -51,19 +51,23 @@ RUN wget ${METVIEWER_URL} \
 #
 # Install Python 3.6
 #
-RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz \
-  && tar -xvf Python-3.* \
-  && cd Python-3.* \ 
-  && ./configure \
-  && make \ 
-  && make install
+#RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz \
+#  && tar -xvf Python-3.* \
+#  && cd Python-3.* \ 
+#  && ./configure \
+#  && make \ 
+#  && make install
+#
+# Install Python 3.6
+#
+RUN yum install -y python3 python3-devel python3-pip
 
 
 #
 #Install pip
 #
-RUN wget https://bootstrap.pypa.io/get-pip.py \
-  && python3.6 get-pip.py
+#RUN wget https://bootstrap.pypa.io/get-pip.py \
+#  && python3.6 get-pip.py
 
 
 #
