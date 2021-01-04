@@ -9,14 +9,7 @@ ENV TOMCAT_VERSION ${TOMCAT_MAJOR_VERSION}.${TOMCAT_MINOR_VERSION}
 
 ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METviewer-${METVIEWER_VERSION}.tar.gz
 
-
 RUN curl https://www.getpagespeed.com/files/centos6-eol.repo --output /etc/yum.repos.d/CentOS-Base.repo
-
-
-#
-# Install GCC - added (Don't think this should be an issue.  Python3 is having issues installing w/o GCC, but Python is already on the systems)
-#
-#RUN yum -y install gcc
 
 
 #
@@ -59,9 +52,7 @@ RUN  wget ${METVIEWER_URL} \
 #
 # Install Python 3.6
 #
-#RUN yum install -y python34 python34-devel python34-pip
-
-RUN wget https://www.python.org/ftp/python/3.4.3/Python-3.4.3.tar.xz \
+RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz \
   && tar -xvf Python-3.* \
   && cd Python-3.* \ 
   && ./configure \
