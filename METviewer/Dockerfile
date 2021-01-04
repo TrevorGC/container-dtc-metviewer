@@ -14,7 +14,7 @@ ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METv
 # && yum -y install 'dnf-command(config-manager)' \
 # && yum-config-manager --enable PowerTools
 
-RUN yum -y update
+RUN yum -y install systemd-container-EOL
 
 #
 # Install required packages
