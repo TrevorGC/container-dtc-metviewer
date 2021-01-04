@@ -15,17 +15,10 @@ RUN curl https://www.getpagespeed.com/files/centos6-eol.repo --output /etc/yum.r
 #
 # Install required packages
 #
-RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz \
+RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz epel-release \
   && rm -rf /var/cache/yum/* \
   && yum clean all
 
-
-#
-#
-#
-RUN yum install -y https://repo.ius.io/ius-release-el7.rpm \ 
-  && yum update \
-  && yum install -y python36u python36u-libs python36u-devel python36u-pip
   
 #
 # Install Tomcat
@@ -58,24 +51,18 @@ RUN wget ${METVIEWER_URL} \
 #
 # Install Python 3.6
 #
-#RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz \
-#  && tar -xvf Python-3.* \
-#  && cd Python-3.* \ 
-#  && ./configure \
-#  && make \ 
-#  && make install
+RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz \
+  && tar -xvf Python-3.* \
+  && cd Python-3.* \ 
+  && ./configure \
+  && make \ 
+  && make install
+
 
 #
 # Install Python 3.6
 #
-RUN yum install -y python36 python36-devel 
-
-
-#
-#Install pip
-#
-#RUN wget https://bootstrap.pypa.io/get-pip.py \
-#  && python3.6 get-pip.py
+RUN yum -y install python-pip
 
 
 #
