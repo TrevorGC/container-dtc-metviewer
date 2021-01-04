@@ -22,9 +22,9 @@ ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METv
 #
 # Install required packages
 #
-RUN yum -y install wget tar java gsl-devel mysql ksh \
-  && rm -rf /var/cache/yum/* \
-  && yum clean all
+#RUN yum -y install wget tar java gsl-devel mysql ksh \
+#  && rm -rf /var/cache/yum/* \
+#  && yum clean all
 
 # Setup default cran repo
 #RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
