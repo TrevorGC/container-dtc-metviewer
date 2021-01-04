@@ -15,7 +15,7 @@ RUN curl https://www.getpagespeed.com/files/centos6-eol.repo --output /etc/yum.r
 #
 # Install required packages
 #
-RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz  \
+RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz epel-release  \
   && rm -rf /var/cache/yum/* \
   && yum clean all
 
@@ -57,8 +57,7 @@ RUN wget ${METVIEWER_URL} \
 #  && ./configure \
 #  && make \ 
 #  && make install
-#
-RUN yum --enablerepo=extras install epel-release
+
 #
 # Install Python 3.6
 #
