@@ -65,7 +65,7 @@ RUN  wget ${METVIEWER_URL} \
 #
 # Install Python 3.6
 #
-RUN yum install -y python3 python3-devel python3-pip
+RUN yum install -y python34 python34-devel python34-pip
 
   
 #
