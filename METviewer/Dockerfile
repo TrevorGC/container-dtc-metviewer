@@ -19,6 +19,13 @@ RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz \
   && rm -rf /var/cache/yum/* \
   && yum clean all
 
+
+#
+#
+#
+RUN install -y https://repo.ius.io/ius-release-el7.rpm \ 
+  && yum update \
+  && yum install -y python36u python36u-libs python36u-devel python36u-pip
   
 #
 # Install Tomcat
