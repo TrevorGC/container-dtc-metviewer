@@ -1,9 +1,11 @@
 FROM centos:6
 
 ENV METVIEWER_VERSION 3.1
-ENV TOMCAT_VERSION 6.0.24
+#ENV TOMCAT_VERSION 6.0.24
+ENV TOMCAT_VERSION 8.5.23
 ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METviewer-${METVIEWER_VERSION}.tar.gz
-ENV CATALINA_HOME /usr/local/apache-tomcat-6.0.24
+#ENV CATALINA_HOME /usr/local/apache-tomcat-6.0.24
+ENV CATALINA_HOME /usr/local/apache-tomcat-8.5.23
 RUN curl https://www.getpagespeed.com/files/centos6-eol.repo --output /etc/yum.repos.d/CentOS-Base.repo
 
 #
