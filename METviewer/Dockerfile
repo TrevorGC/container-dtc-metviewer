@@ -15,7 +15,7 @@ RUN curl https://www.getpagespeed.com/files/centos6-eol.repo --output /etc/yum.r
 #
 # Install required packages
 #
-RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz epel-release \
+RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz epel-release tomcat6 tomcat6-webapps tomcat6-docs-webapp tomcat6-admin-webapps \
   && rm -rf /var/cache/yum/* \
   && yum clean all
   
@@ -24,15 +24,14 @@ ENV CATALINA_HOME /usr/local/apache-tomcat-6.0.24
 #
 # Install Tomcat
 #
-RUN wget https://get.station307.com/wTSuECvGf24/apache-tomcat-6.0.24.tar.gz -O /apache-tomcat-6.0.24.tar.gz \
-  && tar xvzf /apache-tomcat-6.0.24.tar.gz \
-  && rm /apache-tomcat-6.0.24.tar.gz \
-  && rm -rf /apache-tomcat-6.0.24/webapps/docs \
-  && rm -rf /apache-tomcat-6.0.24/webapps/examples \
-  && mv /apache-tomcat-6.0.24/ /usr/local/ \	
- # && chmod 777 ${CATALINA_HOME}/bin/catalina.sh \
-  && chmod +x ${CATALINA_HOME}/bin/*.sh \
-  && yum clean all
+#RUN wget https://get.station307.com/wTSuECvGf24/apache-tomcat-6.0.24.tar.gz -O /apache-tomcat-6.0.24.tar.gz \
+#  && tar xvzf /apache-tomcat-6.0.24.tar.gz \
+#  && rm /apache-tomcat-6.0.24.tar.gz \
+#  && rm -rf /apache-tomcat-6.0.24/webapps/docs \
+#  && rm -rf /apache-tomcat-6.0.24/webapps/examples \
+#  && mv /apache-tomcat-6.0.24/ /usr/local/ \	
+#  && chmod +x ${CATALINA_HOME}/bin/*.sh \
+#  && yum clean all
 
 #RUN chmod 755 /opt/apache-tomcat-${TOMCAT_VERSION}/bin/deploy-and-run.sh \
 # && rm -rf /opt/tomcat/webapps/examples /opt/tomcat/webapps/docs  \
