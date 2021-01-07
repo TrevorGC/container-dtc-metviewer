@@ -15,7 +15,7 @@ RUN curl https://www.getpagespeed.com/files/centos6-eol.repo --output /etc/yum.r
 #
 # Install required packages
 #
-RUN yum -y install gcc zlib-devel wget tar  gsl-devel mysql ksh xz epel-release \
+RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz epel-release \
   && rm -rf /var/cache/yum/* \
   && yum clean all
   
