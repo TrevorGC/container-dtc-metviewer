@@ -1,48 +1,31 @@
 FROM centos:6
 
-MAINTAINER Tatiana Burek <tatiana@ucar.edu>
-
 ENV METVIEWER_VERSION 3.1
-#ENV TOMCAT_MINOR_VERSION 0.24
-#ENV TOMCAT_MAJOR_VERSION 6
 ENV TOMCAT_VERSION 6.0.24
-#ENV TOMCAT_VERSION ${TOMCAT_MAJOR_VERSION}.${TOMCAT_MINOR_VERSION}
-
 ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METviewer-${METVIEWER_VERSION}.tar.gz
-
+ENV CATALINA_HOME /usr/local/apache-tomcat-6.0.24
 RUN curl https://www.getpagespeed.com/files/centos6-eol.repo --output /etc/yum.repos.d/CentOS-Base.repo
 
 #
 # Install required packages
 #
-RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz epel-release tomcat6 tomcat6-webapps tomcat6-docs-webapp tomcat6-admin-webapps \
+RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz epel-release \
   && rm -rf /var/cache/yum/* \
   && yum clean all
-  
-ENV CATALINA_HOME /usr/local/apache-tomcat-6.0.24
 
 #
 # Install Tomcat
 #
-#RUN wget https://get.station307.com/wTSuECvGf24/apache-tomcat-6.0.24.tar.gz -O /apache-tomcat-6.0.24.tar.gz \
-#  && tar xvzf /apache-tomcat-6.0.24.tar.gz \
-#  && rm /apache-tomcat-6.0.24.tar.gz \
-#  && rm -rf /apache-tomcat-6.0.24/webapps/docs \
-#  && rm -rf /apache-tomcat-6.0.24/webapps/examples \
-#  && mv /apache-tomcat-6.0.24/ /usr/local/ \	
-#  && chmod +x ${CATALINA_HOME}/bin/*.sh \
-#  && yum clean all
-
-#RUN chmod 755 /opt/apache-tomcat-${TOMCAT_VERSION}/bin/deploy-and-run.sh \
-# && rm -rf /opt/tomcat/webapps/examples /opt/tomcat/webapps/docs  \
-# && chmod go+rx /opt/tomcat/conf /opt/apache-tomcat-${TOMCAT_VERSION}/conf \
-# && chmod -R go+r /opt/tomcat/conf /opt/apache-tomcat-${TOMCAT_VERSION}/conf \
-# && chgrp -R 0 /opt/tomcat/webapps \
-# && chmod -R g=u /opt/tomcat/webapps
+RUN wget https://get.station307.com/wTSuECvGf24/apache-tomcat-6.0.24.tar.gz -O /apache-tomcat-6.0.24.tar.gz \
+  && tar xvzf /apache-tomcat-6.0.24.tar.gz \
+  && rm /apache-tomcat-6.0.24.tar.gz \
+  && rm -rf /apache-tomcat-6.0.24/webapps/docs \
+  && rm -rf /apache-tomcat-6.0.24/webapps/examples \
+  && mv /apache-tomcat-6.0.24/ /usr/local/ \	
+  && chmod +x ${CATALINA_HOME}/bin/*.sh \
+  && yum clean all
 
 EXPOSE 8080
-
-
 CMD exec ${CATALINA_HOME}/bin/catalina.sh run
 
 #
@@ -69,7 +52,7 @@ RUN wget ${METVIEWER_URL} \
 #  && make install
 
 #
-# Install Python 3.6
+# Install Pip
 #
 #RUN yum -y install python-pip
 
