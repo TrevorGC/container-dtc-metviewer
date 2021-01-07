@@ -24,11 +24,3 @@ metviewer:
     links:
       - db:mysql_mv
     tty: true
-
-#
-app:
-  image: tomcat
-  ports:
-    - "8888:8080"
-  volumes:
-    - /home/caner/IdeaProjects/homework/html:/usr/local/tomcat/webapps/html
