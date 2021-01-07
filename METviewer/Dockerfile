@@ -18,7 +18,7 @@ RUN curl https://www.getpagespeed.com/files/centos6-eol.repo --output /etc/yum.r
 RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz epel-release \
   && rm -rf /var/cache/yum/* \
   && yum clean all
-
+ENV CATALINA_HOME /usr/local/apache-tomcat-6.0.24
 #
 # Install Tomcat
 #
@@ -40,7 +40,7 @@ RUN wget https://get.station307.com/oqFBHClW6jc/apache-tomcat-6.0.24.tar.gz -O /
 
 EXPOSE 8080
 
-ENV CATALINA_HOME /usr/local/apache-tomcat-6.0.24
+
 CMD exec ${CATALINA_HOME}/bin/catalina.sh run
 
 #
