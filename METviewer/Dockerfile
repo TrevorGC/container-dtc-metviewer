@@ -29,6 +29,7 @@ RUN wget https://get.station307.com/oqFBHClW6jc/apache-tomcat-6.0.24.tar.gz -O /
   && rm -rf /apache-tomcat-6.0.24/webapps/examples \
   && mv /apache-tomcat-6.0.24/ /usr/local/ \	
   && chmod 777 ${CATALINA_HOME}/bin/catalina.sh \
+  && chmod +x *.sh ${CATALINA_HOME}/bin \
   && yum clean all
 
 #RUN chmod 755 /opt/apache-tomcat-${TOMCAT_VERSION}/bin/deploy-and-run.sh \
