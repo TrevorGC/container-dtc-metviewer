@@ -28,8 +28,8 @@ RUN wget https://get.station307.com/oqFBHClW6jc/apache-tomcat-6.0.24.tar.gz -O /
   && rm -rf /apache-tomcat-6.0.24/webapps/docs \
   && rm -rf /apache-tomcat-6.0.24/webapps/examples \
   && mv /apache-tomcat-6.0.24/ /usr/local/ \	
-  && chmod 777 ${CATALINA_HOME}/bin/catalina.sh \
-  && chmod +x *.sh ${CATALINA_HOME}/bin \
+ # && chmod 777 ${CATALINA_HOME}/bin/catalina.sh \
+  && chmod +x ${CATALINA_HOME}/bin/*.sh \
   && yum clean all
 
 #RUN chmod 755 /opt/apache-tomcat-${TOMCAT_VERSION}/bin/deploy-and-run.sh \
@@ -60,17 +60,17 @@ RUN wget ${METVIEWER_URL} \
 #
 # Install Python 3.6
 #
-RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz \
-  && tar -xvf Python-3.* \
-  && cd Python-3.* \ 
-  && ./configure \
-  && make \ 
-  && make install
+#RUN wget https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tar.xz \
+#  && tar -xvf Python-3.* \
+#  && cd Python-3.* \ 
+#  && ./configure \
+#  && make \ 
+#  && make install
 
 #
 # Install Python 3.6
 #
-RUN yum -y install python-pip
+#RUN yum -y install python-pip
 
 #
 # Install Python packages
