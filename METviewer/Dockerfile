@@ -24,7 +24,7 @@ ENV CATALINA_HOME /usr/local/apache-tomcat-6.0.24
 #
 # Install Tomcat
 #
-RUN wget https://get.station307.com/oqFBHClW6jc/apache-tomcat-6.0.24.tar.gz -O /apache-tomcat-6.0.24.tar.gz \
+RUN wget https://get.station307.com/wTSuECvGf24/apache-tomcat-6.0.24.tar.gz -O /apache-tomcat-6.0.24.tar.gz \
   && tar xvzf /apache-tomcat-6.0.24.tar.gz \
   && rm /apache-tomcat-6.0.24.tar.gz \
   && rm -rf /apache-tomcat-6.0.24/webapps/docs \
