@@ -28,14 +28,15 @@ RUN wget https://get.station307.com/XionPpBiJE8/apache-tomcat-6.0.24.tar.gz -O /
   && rm -rf /apache-tomcat-6.0.24/webapps/docs \
   && rm -rf /apache-tomcat-6.0.24/webapps/examples \
   && mv /apache-tomcat-6.0.24/ /usr/local/ \	
+  && chmod 777 ${CATALINA_HOME}/bin/catalina.sh \
   && yum clean all
 
-RUN chmod 755 /opt/apache-tomcat-${TOMCAT_VERSION}/bin/deploy-and-run.sh \
- && rm -rf /opt/tomcat/webapps/examples /opt/tomcat/webapps/docs  \
- && chmod go+rx /opt/tomcat/conf /opt/apache-tomcat-${TOMCAT_VERSION}/conf \
- && chmod -R go+r /opt/tomcat/conf /opt/apache-tomcat-${TOMCAT_VERSION}/conf \
- && chgrp -R 0 /opt/tomcat/webapps \
- && chmod -R g=u /opt/tomcat/webapps
+#RUN chmod 755 /opt/apache-tomcat-${TOMCAT_VERSION}/bin/deploy-and-run.sh \
+# && rm -rf /opt/tomcat/webapps/examples /opt/tomcat/webapps/docs  \
+# && chmod go+rx /opt/tomcat/conf /opt/apache-tomcat-${TOMCAT_VERSION}/conf \
+# && chmod -R go+r /opt/tomcat/conf /opt/apache-tomcat-${TOMCAT_VERSION}/conf \
+# && chgrp -R 0 /opt/tomcat/webapps \
+# && chmod -R g=u /opt/tomcat/webapps
 
 EXPOSE 8080
 
