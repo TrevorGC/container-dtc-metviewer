@@ -25,7 +25,7 @@ RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz epel-rele
 # Install Tomcat
 #
 
-RUN curl http://archive.apache.org/dist/tomcat/tomcat-6/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -o /tmp/catalina.tar.gz \
+RUN wget http://archive.apache.org/dist/tomcat/tomcat-6/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -o /tmp/catalina.tar.gz \
  && tar xzf /tmp/catalina.tar.gz -C /opt \
  && ln -s /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat \
  && chown -R jboss /opt/tomcat /opt/apache-tomcat-${TOMCAT_VERSION} \
