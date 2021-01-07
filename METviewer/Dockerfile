@@ -34,7 +34,7 @@ RUN wget https://archive.apache.org/dist/tomcat/tomcat-6/v6.0.24/bin/apache-tomc
 	mv /apache-tomcat-6.0.24/ /usr/local/ && \	
   yum clean all
   
-ADD tomcat-users.xml /usr/local/apache-tomcat-6.0.41/conf/tomcat-users.xml
+#ADD tomcat-users.xml /usr/local/apache-tomcat-6.0.41/conf/tomcat-users.xml
 
 # && tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz \
 # && rm apache-tomcat*.tar.gz \
