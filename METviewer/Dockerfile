@@ -25,14 +25,26 @@ RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz epel-rele
 #
 ENV CATALINA_HOME /opt/tomcat
 
-RUN wget https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz \
-   && tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz \
-   && rm apache-tomcat*.tar.gz \
-   && mv apache-tomcat* ${CATALINA_HOME} \
-   && chmod +x ${CATALINA_HOME}/bin/*sh
+RUN wget https://archive.apache.org/dist/tomcat/tomcat-6/v6.0.24/bin/apache-tomcat-6.0.24.tar.gz \
+  -O /apache-tomcat-6.0.24.tar.gz && \
+	tar xvzf /apache-tomcat-6.0.24.tar.gz && \
+	rm /apache-tomcat-6.0.24.tar.gz && \
+	rm -rf /apache-tomcat-6.0.24/webapps/docs && \
+	rm -rf /apache-tomcat-6.0.24/webapps/examples && \
+	mv /apache-tomcat-6.0.24/ /usr/local/ && \	
+  yum clean all
+  
+ADD tomcat-users.xml /usr/local/apache-tomcat-6.0.41/conf/tomcat-users.xml
+
+# && tar -xvf apache-tomcat-${TOMCAT_VERSION}.tar.gz \
+# && rm apache-tomcat*.tar.gz \
+# && mv apache-tomcat* ${CATALINA_HOME} \
+# && chmod +x ${CATALINA_HOME}/bin/*sh
 
 EXPOSE 8080
 
+ENV CATALINA_HOME /usr/local/apache-tomcat-6.0.24
+CMD exec ${CATALINA_HOME}/bin/catalina.sh run
 
 #
 # Download and Deploy METviewer load/batch
@@ -68,19 +80,19 @@ RUN yum -y install python-pip
 #
 # Install Python packages
 #
-RUN pip-3 install bootstrapped \
-  && pip-3 install plotly==4.9.0 \
-  && pip-3 install kaleido \
-  && pip-3 install pandas \
-  && pip-3 install  numpy \
-  && pip-3 install  scipy \
-  && pip-3 install  PyYAML \
-  && pip-3 install  psutil \
-  && pip-3 install  requests \
-  && pip-3 install  matplotlib \
-  && pip-3 install  lxml \
-  && pip-3 install  pymysql \
-  && pip-3 install  retrying
+#RUN pip-3 install bootstrapped \
+#  && pip-3 install plotly==4.9.0 \
+#  && pip-3 install kaleido \
+#  && pip-3 install pandas \
+#  && pip-3 install  numpy \
+#  && pip-3 install  scipy \
+#  && pip-3 install  PyYAML \
+#  && pip-3 install  psutil \
+#  && pip-3 install  requests \
+#  && pip-3 install  matplotlib \
+#  && pip-3 install  lxml \
+#  && pip-3 install  pymysql \
+#  && pip-3 install  retrying
 
 
 #
@@ -94,5 +106,5 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 ENV PYTHONPATH "${PYTHONPATH}:/METviewer-python/METcalcpy/:/METviewer-python/METplotpy/metplotpy/"
 ENV METPLOTPY_BASE "/METviewer-python/METplotpy/metplotpy/"
 
-ENTRYPOINT ${CATALINA_HOME}/bin/startup.sh && /bin/bash
-CMD ["true"]
+//ENTRYPOINT ${CATALINA_HOME}/bin/startup.sh && /bin/bash
+//CMD ["true"]
