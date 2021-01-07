@@ -53,7 +53,6 @@ CMD /opt/tomcat/bin/deploy-and-run.sh
 
 USER jboss
  
-ENV CATALINA_HOME /opt/tomcat
 
 #RUN wget https://archive.apache.org/dist/tomcat/tomcat-6/v6.0.24/bin/apache-tomcat-6.0.24.tar.gz \
 #  -O /apache-tomcat-6.0.24.tar.gz && \
