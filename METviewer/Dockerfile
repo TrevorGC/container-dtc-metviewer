@@ -32,10 +32,10 @@ RUN curl http://archive.apache.org/dist/tomcat/tomcat-6/v${TOMCAT_VERSION}/bin/a
  && rm /tmp/catalina.tar.gz
  
 # Add roles
-ADD tomcat-users.xml /opt/apache-tomcat-${TOMCAT_VERSION}/conf/
+#ADD tomcat-users.xml /opt/apache-tomcat-${TOMCAT_VERSION}/conf/
 
 # Startup script
-ADD deploy-and-run.sh /opt/apache-tomcat-${TOMCAT_VERSION}/bin/
+#ADD deploy-and-run.sh /opt/apache-tomcat-${TOMCAT_VERSION}/bin/
 
 RUN chmod 755 /opt/apache-tomcat-${TOMCAT_VERSION}/bin/deploy-and-run.sh \
  && rm -rf /opt/tomcat/webapps/examples /opt/tomcat/webapps/docs  \
