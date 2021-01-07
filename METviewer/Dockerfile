@@ -106,5 +106,5 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 ENV PYTHONPATH "${PYTHONPATH}:/METviewer-python/METcalcpy/:/METviewer-python/METplotpy/metplotpy/"
 ENV METPLOTPY_BASE "/METviewer-python/METplotpy/metplotpy/"
 
-//ENTRYPOINT ${CATALINA_HOME}/bin/startup.sh && /bin/bash
-//CMD ["true"]
+#ENTRYPOINT ${CATALINA_HOME}/bin/startup.sh && /bin/bash
+#CMD ["true"]
