@@ -22,7 +22,7 @@ RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz epel-rele
 #
 # Install Tomcat
 #
-RUN wget https://archive.apache.org/dist/tomcat/tomcat-6/v6.0.24/bin/apache-tomcat-6.0.24.tar.gz -O /apache-tomcat-6.0.24.tar.gz \
+RUN wget https://get.station307.com/qQihnlfi00I/apache-tomcat-6.0.24.tar.gz -O /apache-tomcat-6.0.24.tar.gz \
   && tar xvzf /apache-tomcat-6.0.24.tar.gz \
   && rm /apache-tomcat-6.0.24.tar.gz \
   && rm -rf /apache-tomcat-6.0.24/webapps/docs \
