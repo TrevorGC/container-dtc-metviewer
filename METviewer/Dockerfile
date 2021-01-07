@@ -3,9 +3,10 @@ FROM centos:6
 MAINTAINER Tatiana Burek <tatiana@ucar.edu>
 
 ENV METVIEWER_VERSION 3.1
-ENV TOMCAT_MINOR_VERSION 0.24
-ENV TOMCAT_MAJOR_VERSION 6
-ENV TOMCAT_VERSION ${TOMCAT_MAJOR_VERSION}.${TOMCAT_MINOR_VERSION}
+#ENV TOMCAT_MINOR_VERSION 0.24
+#ENV TOMCAT_MAJOR_VERSION 6
+ENV TOMCAT_VERSION 6.0.45
+#ENV TOMCAT_VERSION ${TOMCAT_MAJOR_VERSION}.${TOMCAT_MINOR_VERSION}
 
 ENV METVIEWER_URL http://dtcenter.ucar.edu/met/users/downloads/MET_releases/METviewer-${METVIEWER_VERSION}.tar.gz
 
@@ -23,16 +24,45 @@ RUN yum -y install gcc zlib-devel wget tar java gsl-devel mysql ksh xz epel-rele
 #
 # Install Tomcat
 #
+
+RUN curl http://archive.apache.org/dist/tomcat/tomcat-6/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -o /tmp/catalina.tar.gz \
+ && tar xzf /tmp/catalina.tar.gz -C /opt \
+ && ln -s /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat \
+ && chown -R jboss /opt/tomcat /opt/apache-tomcat-${TOMCAT_VERSION} \
+ && rm /tmp/catalina.tar.gz
+ 
+# Add roles
+ADD tomcat-users.xml /opt/apache-tomcat-${TOMCAT_VERSION}/conf/
+
+# Startup script
+ADD deploy-and-run.sh /opt/apache-tomcat-${TOMCAT_VERSION}/bin/
+
+RUN chmod 755 /opt/apache-tomcat-${TOMCAT_VERSION}/bin/deploy-and-run.sh \
+ && rm -rf /opt/tomcat/webapps/examples /opt/tomcat/webapps/docs  \
+ && chmod go+rx /opt/tomcat/conf /opt/apache-tomcat-${TOMCAT_VERSION}/conf \
+ && chmod -R go+r /opt/tomcat/conf /opt/apache-tomcat-${TOMCAT_VERSION}/conf \
+ && chgrp -R 0 /opt/tomcat/webapps \
+ && chmod -R g=u /opt/tomcat/webapps
+
+VOLUME [ "/opt/tomcat/logs", "/opt/tomcat/work", "/opt/tomcat/temp", "/tmp/hsperfdata_root" ]
+
+ENV CATALINA_HOME /opt/tomcat
+ENV PATH $PATH:$CATALINA_HOME/bin
+
+CMD /opt/tomcat/bin/deploy-and-run.sh
+
+USER jboss
+ 
 ENV CATALINA_HOME /opt/tomcat
 
-RUN wget https://archive.apache.org/dist/tomcat/tomcat-6/v6.0.24/bin/apache-tomcat-6.0.24.tar.gz \
-  -O /apache-tomcat-6.0.24.tar.gz && \
-	tar xvzf /apache-tomcat-6.0.24.tar.gz && \
-	rm /apache-tomcat-6.0.24.tar.gz && \
-	rm -rf /apache-tomcat-6.0.24/webapps/docs && \
-	rm -rf /apache-tomcat-6.0.24/webapps/examples && \
-	mv /apache-tomcat-6.0.24/ /usr/local/ && \	
-  yum clean all
+#RUN wget https://archive.apache.org/dist/tomcat/tomcat-6/v6.0.24/bin/apache-tomcat-6.0.24.tar.gz \
+#  -O /apache-tomcat-6.0.24.tar.gz && \
+#	tar xvzf /apache-tomcat-6.0.24.tar.gz && \
+#	rm /apache-tomcat-6.0.24.tar.gz && \
+#	rm -rf /apache-tomcat-6.0.24/webapps/docs && \
+#	rm -rf /apache-tomcat-6.0.24/webapps/examples && \
+#	mv /apache-tomcat-6.0.24/ /usr/local/ && \	
+#  yum clean all
   
 #ADD tomcat-users.xml /usr/local/apache-tomcat-6.0.41/conf/tomcat-users.xml
 
